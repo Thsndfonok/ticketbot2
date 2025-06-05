@@ -112,4 +112,4 @@ async def ticketpanel(ctx):
 
 # 🟢 Bot indítása
 keep_alive()
-client.run(os.getenv("TOKEN"))
+bot.run(os.getenv("TOKEN"))
