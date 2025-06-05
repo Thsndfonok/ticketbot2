@@ -2,7 +2,22 @@ import discord
 from discord.ext import commands, tasks
 import itertools
 import asyncio
+import os
+import re
 
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot működik!", 200
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
+    
 intents = discord.Intents.default()
 intents.guilds = True
 intents.members = True
@@ -94,4 +109,5 @@ async def ticketpanel(ctx):
     await ctx.send("🎫 Válassz egy opciót a ticket nyitásához:", view=view)
 
 # 🟢 Bot indítása
-bot.run("MTM3OTQ1MTUwODU5MTk1MTk4Mg.Gtm_8-.NW4RjP4BlGHuzky6B-K1hYygpEV1DpHRvvRUzk")
+keep_alive()
+client.run(os.getenv("TOKEN"))
